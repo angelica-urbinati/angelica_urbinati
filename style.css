@@ -490,7 +490,7 @@ footer {
     }
 }
 
-/* RESPONSIVE MOBILE (fino a 767px) */
+/* RESPONSIVE MOBILE */
 @media (max-width: 767px) {
     .logo {
         font-size: 36px;
@@ -560,7 +560,7 @@ footer {
     }
 }
 
-/* RESPONSIVE MOBILE PICCOLO (fino a 375px) */
+/* RESPONSIVE MOBILE */
 @media (max-width: 375px) {
     .section-title h2 {
         font-size: 40px;
@@ -575,11 +575,11 @@ footer {
     }
 }
 
-/* Fascia bianca per migliorare la leggibilità del nome (tablet + mobile) */
+/* Fascia bianca */
 @media (max-width: 1199px) {
   .nome-principale {
-    color: #000;                         /* testo nero */
-    background: rgba(255, 255, 255, 0.75); /* fascia bianca trasparente */
+    color: #000;                        
+    background: rgba(255, 255, 255, 0.75); 
     padding: 10px 16px;
     border-radius: 8px;
 
