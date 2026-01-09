@@ -6,16 +6,17 @@
     <title>Angelica Urbinati - Il mio portfolio personale</title>
 
     <!-- Favicon -->
-<link rel="icon" type="image/png" href="favicons/logo_AU.png">
-    
+    <link rel="icon" type="image/png" href="favicons/logo_AU.png">
+    <link rel="shortcut icon" href="favicons/logo_AU.png">
+
     <!-- Bootstrap Grid CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap-grid.min.css" rel="stylesheet">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Grey+Qo&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -24,13 +25,22 @@
     <header>
         <nav>
             <a href="#" class="logo">AU</a>
-            <ul class="nav-menu">
+
+            <!-- Bottone menu a panino (tablet/mobile) -->
+            <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="#chi-sono">Chi sono</a></li>
                 <li><a href="#progetti">Progetti</a></li>
                 <li><a href="#ispirazione">Ispirazione</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
         </nav>
+
         <div class="hero">
             <img src="img/Copertina_angelica.jpg" alt="Angelica Urbinati - Designer">
             <h1 class="nome-principale">Angelica<br>Urbinati</h1>
@@ -90,23 +100,27 @@
         <div class="video-section">
             <!-- Video 1 -->
             <div class="video-card">
-                <div class="video-title">Sfilata dei copricapi in feltro, durante la Visiting Week.</div>
                 <div class="video-container">
                     <video controls>
-                        <source src="video/video1.mp4" type="video/mp4">
-                        Video 1
+                        <source src="video/sfilata_copricapi.mov" type="video/mp4">
+                        Il tuo browser non supporta il tag video.
                     </video>
+                    <div class="video-overlay">
+                        Sfilata dei copricapi in feltro, durante la Visiting Week.
+                    </div>
                 </div>
             </div>
 
             <!-- Video 2 -->
             <div class="video-card">
-                <div class="video-title">Dimostrazione del progetto "Eggstronauta"</div>
                 <div class="video-container">
                     <video controls>
-                        <source src="video/video2.mp4" type="video/mp4">
-                        Video 2
+                        <source src="video/dimostrazione_uovo.mov" type="video/mp4">
+                        Il tuo browser non supporta il tag video.
                     </video>
+                    <div class="video-overlay">
+                        Dimostrazione del progetto "Eggstronauta"
+                    </div>
                 </div>
             </div>
         </div>
@@ -163,5 +177,25 @@
             © 2025 — Privacy — Cookies
         </div>
     </footer>
+
+    <!-- Script menu a panino -->
+    <script>
+        const toggle = document.querySelector(".menu-toggle");
+        const menu = document.querySelector("#navMenu");
+
+        toggle.addEventListener("click", () => {
+            const isOpen = menu.classList.toggle("open");
+            toggle.classList.toggle("open");
+            toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        menu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                menu.classList.remove("open");
+                toggle.classList.remove("open");
+                toggle.setAttribute("aria-expanded", "false");
+            });
+        });
+    </script>
 </body>
 </html>

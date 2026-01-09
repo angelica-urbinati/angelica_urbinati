@@ -32,13 +32,14 @@ nav {
     top: 0;
     left: 0;
     right: 0;
+    height: 100px;
+    z-index: 100;
+    background: rgba(101, 204, 255, 0.6);
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 60px;
-    height: 100px;
-    z-index: 100;
-    background: rgba(101, 204, 255, 0.6);
 }
 
 .logo {
@@ -86,6 +87,37 @@ nav {
 
 .nav-menu a:hover::after {
     width: 100%;
+}
+
+/* Bottone menu a panino (nascosto su desktop) */
+.menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    margin: 6px 0;
+    background: #000;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* animazione X quando aperto */
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
 }
 
 /* Hero Section */
@@ -234,38 +266,57 @@ nav {
     gap: 40px;
     max-width: 1400px;
     margin: 0 auto 60px;
+    justify-items: center;
 }
 
 .video-card {
-    background: #D9D9D9;
+    width: 555px;
+    height: 600px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.video-title {
-    background: #D9D9D9;
-    padding: 20px;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: #000;
-    text-align: center;
+    background: #000;
 }
 
 .video-container {
+    position: relative;
     width: 100%;
-    height: 400px;
-    background: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
 }
 
 .video-container video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+}
+
+/* Fascia titolo (in alto, appare solo in hover, non blocca i controlli) */
+.video-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+
+    padding: 14px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+
+    pointer-events: none;
+}
+
+.video-container:hover .video-overlay {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Ispirazione Contenuto Section */
@@ -278,22 +329,27 @@ nav {
 .ispirazione-content {
     max-width: 1360px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .ispirazione-content img {
     width: 100%;
-    height: auto;
-    min-height: 300px;
-    max-height: 600px;
+    height: clamp(260px, 40vw, 560px);
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    display: block;
 }
 
+/* Testo ALLINEATO A SINISTRA come la foto */
 .ispirazione-content p {
+    max-width: 100%;
+    margin: 0;
     font-size: 16px;
-    line-height: 1.8;
+    line-height: 1.9;
+    color: #000;
     text-align: left;
 }
 
@@ -348,23 +404,6 @@ footer {
 
 /* RESPONSIVE DESKTOP (1200px+) */
 @media (min-width: 1200px) {
-    nav {
-        padding: 20px 60px;
-    }
-
-    .hero {
-        height: 539px;
-    }
-
-    .nome-principale {
-        font-size: 64px;
-        left: 60px;
-    }
-
-    .section-title h2 {
-        font-size: 180px;
-    }
-
     .progetti-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -372,17 +411,59 @@ footer {
     .video-section {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .bio {
-        padding: 80px 60px;
-        font-size: 18px;
-    }
 }
 
-/* RESPONSIVE TABLET (768px - 1199px) */
-@media (max-width: 1199px) and (min-width: 768px) {
+/* RESPONSIVE TABLET + MOBILE (menu a panino) */
+@media (max-width: 1199px) {
     nav {
-        padding: 20px 40px;
+        padding: 20px 20px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        right: 0;
+
+        flex-direction: column;
+        gap: 0;
+
+        background: rgba(101, 204, 255, 0.95);
+        padding: 10px 0;
+
+        display: none;
+        z-index: 200;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 14px 20px;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .nav-menu a::after {
+        display: none;
+    }
+
+    /* video adattabili su tablet */
+    .video-card {
+        width: 100%;
+        max-width: 555px;
+        height: 600px;
     }
 
     .hero {
@@ -411,30 +492,13 @@ footer {
 
 /* RESPONSIVE MOBILE (fino a 767px) */
 @media (max-width: 767px) {
-    nav {
-        flex-direction: column;
-        height: auto;
-        padding: 15px 20px;
-        gap: 15px;
-    }
-
     .logo {
         font-size: 36px;
     }
 
-    .nav-menu {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .nav-menu a {
-        font-size: 16px;
-    }
-
     .hero {
         height: 300px;
-        margin-top: 140px;
+        margin-top: 100px;
     }
 
     .nome-principale {
@@ -481,17 +545,8 @@ footer {
         margin-bottom: 40px;
     }
 
-    .video-container {
-        height: 250px;
-    }
-
     .ispirazione-contenuto-section {
         padding: 40px 20px;
-    }
-
-    .ispirazione-content img {
-        min-height: 200px;
-        max-height: 400px;
     }
 
     footer {
@@ -518,4 +573,20 @@ footer {
     .progetto-card h3 {
         font-size: 28px;
     }
+}
+
+/* Fascia bianca per migliorare la leggibilità del nome (tablet + mobile) */
+@media (max-width: 1199px) {
+  .nome-principale {
+    color: #000;                         /* testo nero */
+    background: rgba(255, 255, 255, 0.75); /* fascia bianca trasparente */
+    padding: 10px 16px;
+    border-radius: 8px;
+
+    display: inline-block;
+    max-width: calc(100% - 40px);
+
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
 }
