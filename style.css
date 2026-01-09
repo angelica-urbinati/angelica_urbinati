@@ -13,8 +13,7 @@ body {
     font-family: 'Inter', sans-serif;
     color: #333;
     line-height: 1.6;
-    max-width: 1440px;
-    margin: 0 auto;
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -25,19 +24,18 @@ h1, h2, h3 {
 /* Header e Navigation */
 header {
     position: relative;
+    width: 100%;
 }
 
 nav {
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1440px;
-    max-width: 100%;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 60px;
+    padding: 20px 60px;
     height: 100px;
     z-index: 100;
     background: rgba(101, 204, 255, 0.6);
@@ -59,6 +57,7 @@ nav {
     display: flex;
     list-style: none;
     gap: 50px;
+    margin: 0;
 }
 
 .nav-menu a {
@@ -92,11 +91,10 @@ nav {
 /* Hero Section */
 .hero {
     position: relative;
-    width: 1440px;
-    max-width: 100%;
+    width: 100%;
     height: 539px;
     overflow: hidden;
-    margin: 100px auto 0;
+    margin-top: 100px;
 }
 
 .hero img {
@@ -114,20 +112,18 @@ nav {
     line-height: 1.2;
 }
 
-/* Chi sono Titolo Section */
-.chi-sono-titolo-section {
-    width: 1440px;
-    max-width: 100%;
-    height: 406px;
-    margin: 0 auto;
+/* Sezioni Titolo */
+.section-title {
+    width: 100%;
+    min-height: 406px;
     background: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
+    padding: 60px 20px;
 }
 
-.chi-sono-titolo-section h2 {
+.section-title h2 {
     font-size: 180px;
     text-align: center;
     color: #000;
@@ -136,24 +132,19 @@ nav {
 
 /* Chi sono Contenuto Section */
 .chi-sono-contenuto-section {
-    width: 1440px;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0;
+    width: 100%;
     background: rgba(101, 204, 255, 0.6);
+    padding: 0;
 }
 
 .chi-sono-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    max-width: 1440px;
-    margin: 0 auto;
-    align-items: stretch;
-    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .foto-profilo {
+    flex: 1;
+    min-width: 300px;
     background: #000;
     display: flex;
     align-items: center;
@@ -164,11 +155,11 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 0;
-    box-shadow: none;
 }
 
 .bio {
+    flex: 1;
+    min-width: 300px;
     padding: 80px 60px;
     text-align: left;
     font-size: 18px;
@@ -187,82 +178,19 @@ nav {
     margin-bottom: 0;
 }
 
-/* Progetti Titolo Section */
-.progetti-titolo-section {
-    width: 1440px;
-    max-width: 100%;
-    height: 406px;
-    margin: 0 auto;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 60px;
-}
-
-.progetti-titolo-section h2 {
-    font-size: 64px;
-    text-align: center;
-    color: #333;
-    margin: 0;
-}
-
 /* Progetti Grid Section */
 .progetti-grid-section {
-    width: 1440px;
-    max-width: 100%;
-    margin: 0 auto;
+    width: 100%;
     background: rgba(101, 204, 255, 0.6);
-    padding: 60px 60px;
+    padding: 60px 30px;
 }
 
 .progetti-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
     max-width: 1400px;
-    margin: 0 auto 40px;
-}
-
-/* Video Section */
-.video-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    max-width: 1400px;
-    margin: 0 auto 40px;
-}
-
-.video-card {
-    background: #D9D9D9;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.video-title {
-    background: #D9D9D9;
-    padding: 20px;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: #000;
-    text-align: center;
-}
-
-.video-card .video-container {
-    width: 100%;
-    height: 400px;
-    background: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.video-card video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    margin: 0 auto 60px;
 }
 
 .progetto-card {
@@ -299,33 +227,52 @@ nav {
     text-align: left;
 }
 
-/* Ispirazione Titolo Section */
-.ispirazione-titolo-section {
-    width: 1440px;
-    max-width: 100%;
-    height: 406px;
-    margin: 0 auto;
-    background: white;
+/* Video Section */
+.video-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto 60px;
+}
+
+.video-card {
+    background: #D9D9D9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.video-title {
+    background: #D9D9D9;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+}
+
+.video-container {
+    width: 100%;
+    height: 400px;
+    background: #f0f0f0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 60px;
 }
 
-.ispirazione-titolo-section h2 {
-    font-size: 64px;
-    text-align: center;
-    color: #333;
-    margin: 0;
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Ispirazione Contenuto Section */
 .ispirazione-contenuto-section {
-    width: 1440px;
-    max-width: 100%;
-    margin: 0 auto;
+    width: 100%;
     background: rgba(101, 204, 255, 0.6);
-    padding: 60px 60px;
+    padding: 60px 30px;
 }
 
 .ispirazione-content {
@@ -335,8 +282,9 @@ nav {
 
 .ispirazione-content img {
     width: 100%;
-    max-width: 1360px;
-    height: 600px;
+    height: auto;
+    min-height: 300px;
+    max-height: 600px;
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -351,15 +299,12 @@ nav {
 
 /* Footer */
 footer {
-    width: 1440px;
-    max-width: 100%;
-    margin: 0 auto;
+    width: 100%;
     background: white;
     color: #000;
-    padding: 40px 60px;
+    padding: 40px 30px;
     text-align: center;
 }
-
 
 .logo-footer {
     font-family: 'Grey Qo', cursive;
@@ -401,67 +346,176 @@ footer {
     margin-top: 20px;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .chi-sono-content {
-        grid-template-columns: 1fr;
-        text-align: center;
+/* RESPONSIVE DESKTOP (1200px+) */
+@media (min-width: 1200px) {
+    nav {
+        padding: 20px 60px;
     }
-    
-    .bio {
-        text-align: center;
+
+    .hero {
+        height: 539px;
     }
-    
+
+    .nome-principale {
+        font-size: 64px;
+        left: 60px;
+    }
+
+    .section-title h2 {
+        font-size: 180px;
+    }
+
     .progetti-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .video-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bio {
+        padding: 80px 60px;
+        font-size: 18px;
     }
 }
 
-@media (max-width: 768px) {
+/* RESPONSIVE TABLET (768px - 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
     nav {
-        padding: 15px 30px;
-        flex-direction: column;
-        gap: 20px;
+        padding: 20px 40px;
     }
-    
-    .nav-menu {
-        gap: 20px;
+
+    .hero {
+        height: 400px;
     }
-    
+
     .nome-principale {
         font-size: 48px;
-        left: 30px;
+        left: 40px;
+        bottom: 30px;
+    }
+
+    .section-title h2 {
+        font-size: 100px;
+    }
+
+    .progetti-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bio {
+        padding: 60px 40px;
+        font-size: 16px;
+    }
+}
+
+/* RESPONSIVE MOBILE (fino a 767px) */
+@media (max-width: 767px) {
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 36px;
+    }
+
+    .nav-menu {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-menu a {
+        font-size: 16px;
+    }
+
+    .hero {
+        height: 300px;
+        margin-top: 140px;
+    }
+
+    .nome-principale {
+        font-size: 36px;
+        left: 20px;
         bottom: 20px;
     }
-    
-    .chi-sono-contenuto-section {
-        padding: 60px 30px;
+
+    .section-title {
+        min-height: 250px;
+        padding: 40px 20px;
     }
-    
-    .chi-sono-titolo-section h2, .progetti-titolo-section h2, .ispirazione-titolo-section h2 {
+
+    .section-title h2 {
         font-size: 48px;
     }
-    
+
+    .chi-sono-content {
+        flex-direction: column;
+    }
+
+    .foto-profilo {
+        min-height: 300px;
+    }
+
+    .bio {
+        padding: 40px 20px;
+        font-size: 16px;
+    }
+
+    .progetti-grid-section {
+        padding: 40px 20px;
+    }
+
     .progetti-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
     }
-    
+
+    .video-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .video-container {
+        height: 250px;
+    }
+
+    .ispirazione-contenuto-section {
+        padding: 40px 20px;
+    }
+
+    .ispirazione-content img {
+        min-height: 200px;
+        max-height: 400px;
+    }
+
     footer {
         padding: 30px 20px;
     }
-    
+
     .contatti {
         flex-direction: column;
         gap: 15px;
+        align-items: center;
     }
 }
 
-@media (max-width: 480px) {
-    .nome-principale {
-        font-size: 36px;
+/* RESPONSIVE MOBILE PICCOLO (fino a 375px) */
+@media (max-width: 375px) {
+    .section-title h2 {
+        font-size: 40px;
     }
-    
-    .chi-sono-titolo-section h2, .progetti-titolo-section h2, .ispirazione-titolo-section h2 {
-        font-size: 36px;
+
+    .nome-principale {
+        font-size: 32px;
+    }
+
+    .progetto-card h3 {
+        font-size: 28px;
     }
 }
