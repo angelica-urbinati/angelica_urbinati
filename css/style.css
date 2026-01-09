@@ -197,11 +197,11 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
+    padding: 0 60px;
 }
 
 .progetti-titolo-section h2 {
-    font-size: 180px;
+    font-size: 64px;
     text-align: center;
     color: #333;
     margin: 0;
@@ -225,72 +225,30 @@ nav {
 }
 
 /* Video Section */
+.video-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto 40px;
+}
 
 .video-card {
     background: #D9D9D9;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-;
-
-.video-card {
-    position: relative;
 }
 
-.video-section {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    max-width: 1400px;
-    margin: 0 auto 40px;
-}
-
-.video-container {
-    position: relative;
-    height: 600px;          /* ALTEZZA VISIVA */
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-.video-container video {
-    height: 100%;
-    width: auto;            /* FONDAMENTALE */
-    max-width: 100%;
-    object-fit: contain;    /* NIENTE TAGLI */
-    z-index: 1;
-}
-
-
-/* Overlay */
 .video-title {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.8); /* 80% */
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    background: #D9D9D9;
     padding: 20px;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 2;
-    pointer-events: none; /* fondamentale */
+    font-weight: 400;
+    color: #000;
+    text-align: center;
 }
-
-/* Hover SULLA CARD, non sul video */
-.video-card:hover .video-title {
-    opacity: 1;
-}
-
 
 .video-card .video-container {
     width: 100%;
@@ -355,7 +313,7 @@ nav {
 }
 
 .ispirazione-titolo-section h2 {
-    font-size: 180px;
+    font-size: 64px;
     text-align: center;
     color: #333;
     margin: 0;
@@ -401,6 +359,7 @@ footer {
     padding: 40px 60px;
     text-align: center;
 }
+
 
 .logo-footer {
     font-family: 'Grey Qo', cursive;
